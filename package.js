@@ -1,6 +1,6 @@
 Package.describe({
   summary: 'OpenID Connect (OIDC) flow for Meteor',
-  version: '1.0.13',
+  version: '1.0.14',
   name: 'akarda:oidc',
   git: 'https://github.com/akarda/oidc.git'
 })

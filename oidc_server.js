@@ -37,25 +37,12 @@ OAuth.registerService('azureAd', 2, null, function (query) {
   if (debug) console.log('XXX: userinfo:', userinfo)
 
   var serviceData = {}
-  serviceData.id = userinfo.uuid // || userinfo["id"];
-  serviceData.email = userinfo.email // || userinfo["uid"];
-  serviceData.fullname = userinfo.name // || userinfo["displayName"];
+  serviceData.id = userinfo.uuid
+  serviceData.email = userinfo.preferred_username
+  serviceData.fullname = userinfo.name
   serviceData.role = userinfo.role
   serviceData.accessToken = accessToken
   serviceData.expiresAt = expiresAt
-
-  // If on Oracle OIM email is empty or null, get info from username
-  if (process.env.ORACLE_OIM_ENABLED === 'true' || process.env.ORACLE_OIM_ENABLED === true) {
-    if (userinfo[process.env.OAUTH2_EMAIL_MAP]) {
-      serviceData.email = userinfo[process.env.OAUTH2_EMAIL_MAP]
-    } else {
-      serviceData.email = userinfo[process.env.OAUTH2_USERNAME_MAP]
-    }
-  }
-
-  if (process.env.ORACLE_OIM_ENABLED !== 'true' && process.env.ORACLE_OIM_ENABLED !== true) {
-    serviceData.email = userinfo[process.env.OAUTH2_EMAIL_MAP] // || userinfo["email"];
-  }
 
   if (accessToken) {
     var tokenContent = getTokenContent(accessToken)
