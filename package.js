@@ -1,18 +1,18 @@
 Package.describe({
   summary: 'OpenID Connect (OIDC) flow for Meteor',
-  version: '1.0.14',
+  version: '1.0.15',
   name: 'akarda:oidc',
   git: 'https://github.com/akarda/oidc.git'
 })
 
 Package.onUse(function (api) {
-  api.use('oauth2@1.1.0', ['client', 'server'])
-  api.use('oauth@1.1.0', ['client', 'server'])
-  api.use('http@1.1.0', ['server'])
-  api.use('underscore@1.0.0', 'client')
-  api.use('templating@1.1.0', 'client')
-  api.use('random@1.0.0', 'client')
-  api.use('service-configuration@1.0.0', ['client', 'server'])
+  api.use('oauth2@1.3.1', ['client', 'server'])
+  api.use('oauth@2.0.0', ['client', 'server'])
+  api.use('http@2.0.0', 'server')
+  api.use('underscore@1.0.10', 'client')
+  api.use('templating@1.4.1', 'client')
+  api.use('random@1.2.0', 'client')
+  api.use('service-configuration@1.1.0', ['client', 'server'])
 
   api.export('Oidc')
 
